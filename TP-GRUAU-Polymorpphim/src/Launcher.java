@@ -1,6 +1,7 @@
 import java.io.File;
+import java.io.IOException;
 
-import shape.utils.ShapeEnum;
+import shape.utils.ESVGShape;
 import shape.IShape;
 import shape.exception.NoMatchingShapeConstructorException;
 import svg.reader.SVGReader;
@@ -15,10 +16,13 @@ public class Launcher {
 		
 		SVG svg;
 		try {
-//			svg = reader.readAsSVG();
+			svg = reader.readAsSVG();
 			//svg.show();
 			//Le show ne fonctionne pas.
-			ShapeEnum shapeClass = ShapeEnum.getValueOf("circle");
+
+
+			//Test With ESVGShape
+			ESVGShape shapeClass = ESVGShape.getValueOf("circle");
             assert shapeClass != null : "La valeur n'à pas été trouvée.";
 
 			double radius = 8;
@@ -28,10 +32,10 @@ public class Launcher {
 
 			System.out.println(shape.getSuperficy());
 			
-		} catch (InstantiationException | IllegalAccessException | NoMatchingShapeConstructorException e) {
+		} catch (InstantiationException | IllegalAccessException | NoMatchingShapeConstructorException | IOException e) {
             throw new RuntimeException(e);
         }
 
 
-	}
+    }
 }

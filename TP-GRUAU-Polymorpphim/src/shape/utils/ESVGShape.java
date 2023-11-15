@@ -8,7 +8,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-public enum ShapeEnum implements ShapeClassProvider {
+public enum ESVGShape implements ShapeClassProvider {
     CIRCLE(Circle.class),
     ELLIPSE(Ellipse.class),
     POLYGON(Polygon.class),
@@ -17,16 +17,16 @@ public enum ShapeEnum implements ShapeClassProvider {
 
     private final Class<?> shapeClass;
 
-    ShapeEnum(Class<?> shapeClass) {
+    ESVGShape(Class<?> shapeClass) {
         this.shapeClass = shapeClass;
     }
 
 
-    public static ShapeEnum getValueOf(String name){
+    public static ESVGShape getValueOf(String name){
         String upperName = name.toUpperCase();
-        for (ShapeEnum changeNameShapeEnum : ShapeEnum.values()){
-            if(changeNameShapeEnum.name().equals(upperName)){
-                return changeNameShapeEnum;
+        for (ESVGShape changeNameESVGShape : ESVGShape.values()){
+            if(changeNameESVGShape.name().equals(upperName)){
+                return changeNameESVGShape;
             }
         }
         return null;
