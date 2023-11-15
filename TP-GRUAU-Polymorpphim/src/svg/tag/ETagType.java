@@ -1,6 +1,6 @@
-package svg.balise;
+package svg.tag;
 
-public enum EBaliseType {	
+public enum ETagType {
 	svg("svg",false),
 	rect("rect",false),
 	description("desc",false),
@@ -12,13 +12,13 @@ public enum EBaliseType {
 	private String value;
 	private boolean displayable; 
 	
-	private EBaliseType(String stringValue, boolean displayable) {
+	private ETagType(String stringValue, boolean displayable) {
 		this.value = stringValue;
 		this.displayable = displayable;
 	}
 	
-	public static EBaliseType getTypeByString(String text) {
-		for (EBaliseType type : EBaliseType.values()) {
+	public static ETagType getTypeByString(String text) {
+		for (ETagType type : ETagType.values()) {
 			if (type.getValue().equals(text)) {
 				return type;
 			}

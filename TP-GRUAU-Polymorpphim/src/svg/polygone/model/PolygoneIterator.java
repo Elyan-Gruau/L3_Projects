@@ -2,7 +2,7 @@ package svg.polygone.model;
 
 import java.util.Iterator;
 
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 class PolygoneIterator implements Iterator<Vector> {
 	private Polygone polygon;

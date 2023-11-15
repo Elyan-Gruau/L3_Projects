@@ -1,6 +1,6 @@
 package shape;
 
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 public abstract class ABSShape implements IShape{
     protected Vector[] points;

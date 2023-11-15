@@ -1,7 +1,7 @@
 package shape.impl;
 
 import shape.ABSShape;
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 import java.awt.*;
 

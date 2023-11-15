@@ -1,6 +1,6 @@
 package shape;
 
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 import java.awt.*;//todo bad import ??
 

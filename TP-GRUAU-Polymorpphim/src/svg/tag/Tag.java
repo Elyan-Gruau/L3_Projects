@@ -1,4 +1,4 @@
-package svg.balise;
+package svg.tag;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,14 +6,14 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Balise {
+public class Tag {
 	private String text;
 	private String name;
 	private HashMap<String,String> attributes;
-	private EBaliseType type;
+	private ETagType type;
 	private boolean isEnd; 
 	
-	public Balise(String text) {
+	public Tag(String text) {
 		assert text != null && !text.isBlank() : "le texte donné est vide.";
 		this.text = text;
 		System.out.println(text);
@@ -29,8 +29,8 @@ public class Balise {
 	}
 	
 	
-	private EBaliseType extractType(String text) {
-		for(EBaliseType type:EBaliseType.values()) {
+	private ETagType extractType(String text) {
+		for(ETagType type: ETagType.values()) {
 			int length = text.length() < 10 ? text.length() : 10; 
 			
 			if (text.substring(0,length).contains(type.getValue())) {
@@ -40,11 +40,11 @@ public class Balise {
 		return null;
 	}
 	
-	public static ArrayList<Balise> parse(String text) {
-		ArrayList<Balise> result = new ArrayList<>();
+	public static ArrayList<Tag> parse(String text) {
+		ArrayList<Tag> result = new ArrayList<>();
 		String[] split = text.split("<.*?>");
 		for (String s:split) {
-			result.add(new Balise(s));
+			result.add(new Tag(s));
 			
 		}
 		return result;
@@ -89,7 +89,7 @@ public class Balise {
 	}
 
 
-	public EBaliseType getType() {
+	public ETagType getType() {
 		return type;
 	}
 	

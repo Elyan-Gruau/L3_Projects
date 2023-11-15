@@ -1,6 +1,6 @@
 package shape.impl;
 
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 public class Ellipse extends Circle{
     private double XRadius;

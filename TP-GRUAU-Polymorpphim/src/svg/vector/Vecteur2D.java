@@ -1,4 +1,4 @@
-package svg.vecteur;
+package svg.vector;
 
 import java.util.ArrayList;
 

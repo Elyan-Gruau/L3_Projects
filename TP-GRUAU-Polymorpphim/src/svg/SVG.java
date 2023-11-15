@@ -2,10 +2,9 @@ package svg;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Stack;
 
-import svg.balise.Balise;
-import svg.balise.EBaliseType;
+import svg.tag.Tag;
+import svg.tag.ETagType;
 import svg.polygone.model.Polygone;
 import svg.polygone.view.DessinePolygone;
 
@@ -13,28 +12,28 @@ public class SVG {
 	private int width;
 	private int height;
 	private String xmlVerison;
-	private ArrayList<Balise> balises;
+	private ArrayList<Tag> tags;
 	
 	
 	public SVG(String xml ) {
 		assert isXMLCorrect(xml) : "le XML n'est pas correct.";
 	    
-	    this.balises = new ArrayList<>();
+	    this.tags = new ArrayList<>();
 	    for (String tag : parse(xml)) {
 	        //System.out.println("Balise XML ou contenu : " + tag);
 	    	String trimmedTag = tag.trim();
 	    	
-	    	Balise balise = new Balise(tag);
+	    	Tag balise = new Tag(tag);
 	    	if (!balise.isEnd()) {
-	    		balises.add(balise);
+	    		tags.add(balise);
 	    	}
 	    	
 	    
 	    }
-	    Balise svgBalise = findBaliseByType(EBaliseType.svg);
+	    Tag svgTag = findBaliseByType(ETagType.svg);
 	    
 	    
-	    String viewBox = svgBalise.getAttribute("viewBox");
+	    String viewBox = svgTag.getAttribute("viewBox");
 	    String[] splitViewBox = viewBox.split(" ");
 	    this.width = Integer.parseInt(splitViewBox[2]) ;
 	    this.height = Integer.parseInt(splitViewBox[3]) ;
@@ -42,7 +41,7 @@ public class SVG {
 	    //System.out.println(viewBox);
 	    
 	    
-	    for (Balise b:balises) {
+	    for (Tag b: tags) {
 	    	System.out.println(b.getText());
 	    }
 	}
@@ -115,63 +114,63 @@ public class SVG {
 				//cabV1.show(g);
 			ArrayList<Polygone> polygones = new ArrayList<Polygone>();
 			
-			for(Balise balise: balises) {
-				if (!balise.getType().isDisplayble()) continue;
+			for(Tag tag : tags) {
+				if (!tag.getType().isDisplayble()) continue;
 				
-				Polygone polygone = new Polygone(balise);
+				Polygone polygone = new Polygone(tag);
 				DessinePolygone.drawPolygone(g, polygone);
 			}
 			 
 		 });
 	}
 	
-	public Balise findBaliseByName(String name) {
-		for (Balise balise:balises) {
-			if (balise.getName().equals(name)) {
-				return balise;
+	public Tag findBaliseByName(String name) {
+		for (Tag tag : tags) {
+			if (tag.getName().equals(name)) {
+				return tag;
 			}
 		}
 		return null;
 	}
 	
-	public Balise findBaliseByType(EBaliseType type) {
-		for (Balise balise:balises) {
-			if (balise.getType() == type) {
-				return balise;
+	public Tag findBaliseByType(ETagType type) {
+		for (Tag tag : tags) {
+			if (tag.getType() == type) {
+				return tag;
 			}
 		}
 		return null;
 	}
 	
-	public ArrayList<Balise> getBalises(){
-		return balises;
+	public ArrayList<Tag> getBalises(){
+		return tags;
 	}
 	
-	public int countTagOfType(EBaliseType type) {
+	public int countTagOfType(ETagType type) {
 		int counter = 0;
-		for (Balise balise:balises) {
-			if (balise.getType() ==type ) {
+		for (Tag tag : tags) {
+			if (tag.getType() ==type ) {
 				counter ++;
 			}
 		}
 		return counter;
 	}
 	
-	public ArrayList<Balise> getDisplayableTags(){
-		ArrayList<Balise> results = new ArrayList<Balise>() ;
-		for (Balise balise: balises) {
-			if (balise.getType().isDisplayble()) {
-				results.add(balise);
+	public ArrayList<Tag> getDisplayableTags(){
+		ArrayList<Tag> results = new ArrayList<Tag>() ;
+		for (Tag tag : tags) {
+			if (tag.getType().isDisplayble()) {
+				results.add(tag);
 			}
 		}
 		return results;
 	}
 	
-	public ArrayList<Balise> getTagsByType(EBaliseType type){
-		ArrayList<Balise> results = new ArrayList<Balise>() ;
-		for (Balise balise: balises) {
-			if (balise.getType() == type) {
-				results.add(balise);
+	public ArrayList<Tag> getTagsByType(ETagType type){
+		ArrayList<Tag> results = new ArrayList<Tag>() ;
+		for (Tag tag : tags) {
+			if (tag.getType() == type) {
+				results.add(tag);
 			}
 		}
 		return results;

@@ -2,10 +2,7 @@ package shape.utils;
 
 import shape.*;
 import shape.exception.NoMatchingShapeConstructorException;
-import shape.impl.Circle;
-import shape.impl.Ellipse;
-import shape.impl.Polygon;
-import shape.impl.Square;
+import shape.impl.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +12,8 @@ public enum ShapeEnum implements ShapeClassProvider {
     CIRCLE(Circle.class),
     ELLIPSE(Ellipse.class),
     POLYGON(Polygon.class),
-    SQUARE(Square.class);
+    SQUARE(Square.class),
+    RECTANGLE(Rectangle.class);
 
     private final Class<?> shapeClass;
 

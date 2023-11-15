@@ -1,12 +1,11 @@
 import java.io.File;
-import java.io.IOException;
 
 import shape.utils.ShapeEnum;
 import shape.IShape;
 import shape.exception.NoMatchingShapeConstructorException;
 import svg.reader.SVGReader;
 import svg.SVG;
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 public class Launcher {
 	public static void main(String[] args) {

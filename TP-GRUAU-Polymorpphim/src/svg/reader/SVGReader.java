@@ -8,8 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import svg.SVG;
-import svg.balise.Balise;
-import svg.balise.EBaliseType;
+import svg.tag.Tag;
+import svg.tag.ETagType;
 import svg.polygone.model.Polygone;
 
 public class SVGReader {
@@ -60,38 +60,38 @@ public class SVGReader {
 	}
 
 	public String[] retourneBalises() {
-		ArrayList<Balise> balises = svg.getBalises();
-		String[] results = new String[balises.size()];
-		for (int i = 0 ; i<balises.size();i++) {
-			results[i] = balises.get(i).getText();
+		ArrayList<Tag> tags = svg.getBalises();
+		String[] results = new String[tags.size()];
+		for (int i = 0; i< tags.size(); i++) {
+			results[i] = tags.get(i).getText();
 		}
 		return results;
 	}
 
 	public String[] retourneVraiesBalises() {
-		ArrayList<Balise> balises = svg.getDisplayableTags();
-		String[] results = new String[balises.size()];
-		for (int i = 0 ; i<balises.size();i++) {			
-			results[i] = balises.get(i).getText();	
+		ArrayList<Tag> tags = svg.getDisplayableTags();
+		String[] results = new String[tags.size()];
+		for (int i = 0; i< tags.size(); i++) {
+			results[i] = tags.get(i).getText();
 		}
 		return results;
 	}
 
 	public String[] retournePolygones() {
 		// TODO Auto-generated method 
-		ArrayList<Balise> balises = svg.getTagsByType(EBaliseType.polygon);
-		String[] results = new String[balises.size()];
-		for (int i = 0 ; i<balises.size();i++) {
-			Balise balise = balises.get(i);
-			if( balise.getType() == EBaliseType.polygon) {
-				results[i] = balise.getText();	
+		ArrayList<Tag> tags = svg.getTagsByType(ETagType.polygon);
+		String[] results = new String[tags.size()];
+		for (int i = 0; i< tags.size(); i++) {
+			Tag tag = tags.get(i);
+			if( tag.getType() == ETagType.polygon) {
+				results[i] = tag.getText();
 			}
 		}
 		return results;
 	}
 
 	public static Polygone buildPolygon(String string) {
-		return  new Polygone(new Balise(string));
+		return  new Polygone(new Tag(string));
 	}
 	
 

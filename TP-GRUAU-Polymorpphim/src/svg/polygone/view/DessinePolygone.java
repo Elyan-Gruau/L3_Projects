@@ -2,10 +2,9 @@ package svg.polygone.view;
 
 import java.awt.Graphics;
 
-import frame.FrameHelper;
 import svg.polygone.model.Polygone;
 import svg.polygone.model.PolygoneIterable;
-import svg.vecteur.Vector;
+import svg.vector.Vector;
 
 public class DessinePolygone {
 	private static int[] xPoints, yPoints;

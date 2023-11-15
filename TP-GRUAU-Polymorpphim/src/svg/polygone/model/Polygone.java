@@ -3,9 +3,9 @@ package svg.polygone.model;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import svg.balise.Balise;
-import svg.balise.EBaliseType;
-import svg.vecteur.Vector;
+import svg.tag.Tag;
+import svg.tag.ETagType;
+import svg.vector.Vector;
 
 public class Polygone {
 	private Vector[] points ;
@@ -29,10 +29,10 @@ public class Polygone {
 	}
 	
 	
-	public Polygone(Balise balise) {
-		assert balise != null: "la balise ne doit pas être null.";
-		assert balise.getType() == EBaliseType.polygon : "La balise donnée n'est pas de type polygon.";
-		String pointsAsText = balise.getAttribute("points");
+	public Polygone(Tag tag) {
+		assert tag != null: "la balise ne doit pas être null.";
+		assert tag.getType() == ETagType.polygon : "La balise donnée n'est pas de type polygon.";
+		String pointsAsText = tag.getAttribute("points");
 		if (pointsAsText != null) {
 			String[] splittedPoints = pointsAsText.split(" ");
 			Vector[] tempPoints = new Vector[splittedPoints.length];
