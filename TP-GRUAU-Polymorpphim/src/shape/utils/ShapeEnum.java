@@ -47,7 +47,9 @@ public enum ShapeEnum implements ShapeClassProvider {
         try {
             //Trouve le constructeur en se basant sur la classe et sur la signature du constructeur.
             Constructor<?> constructor = shapeClass.getDeclaredConstructor(parameterTypes);
-            return (IShape) constructor.newInstance(args);//todo what ?
+
+            //Use the previous constructor to create a new instance
+            return (IShape) constructor.newInstance(args);
         } catch (InvocationTargetException e ) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e){
