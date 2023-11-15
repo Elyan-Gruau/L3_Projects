@@ -13,19 +13,15 @@ public class Circle extends ABSShape {
         this.radius = radius;
     }
 
-//    public Circle(Object... args){
-//        this((Vector) args[0],(double) args[1]);
-//
-//    }
 
     @Override
     public double getSuperficy() {
-        return 12;//todo
+        return Math.PI*(Math.pow(radius,2));
     }
 
     @Override
     public double getPermimeter() {
-        return 0;//todo
+        return  2 * Math.PI * radius;
     }
 
     @Override

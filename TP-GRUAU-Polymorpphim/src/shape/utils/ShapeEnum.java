@@ -42,7 +42,7 @@ public enum ShapeEnum implements ShapeClassProvider {
     public IShape createShapeInstance(Object... args) throws IllegalAccessException, InstantiationException, NoMatchingShapeConstructorException {
         //Obtiens la liste des classes des paramètres en utilisant un stream basé sur les args.
         Class<?>[] parameterTypes = Arrays.stream(args).map(Object::getClass).toArray(Class[]::new);
-        System.out.println("Parameter types: " + Arrays.toString(parameterTypes));
+        //System.out.println("Parameter types: " + Arrays.toString(parameterTypes));
 
         try {
             //Trouve le constructeur en se basant sur la classe et sur la signature du constructeur.
