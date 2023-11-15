@@ -2,13 +2,15 @@ package svg.tag;
 
 public enum ETagType {
 	svg("svg",false),
-	rect("rect",false),
 	description("desc",false),
-	polygon("polygon",true),
-	comment("!--",false),
 	doctype("!DOCTYPE",false),
-	xml("?xml",false);
-	
+	xml("?xml",false),
+	comment("!--",false),
+	polygon("polygon",true),
+	rect("rect",true),
+	circle("circle",true),
+	ellipse("ellipse",true);
+
 	private String value;
 	private boolean displayable; 
 	
