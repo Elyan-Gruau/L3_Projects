@@ -110,18 +110,18 @@ public class SVG {
 		System.out.println("DISPLAYING");
 		System.out.println("width :"+width);
 		System.out.println("height :"+height);
-		 new frame.FrameHelper(width, height).draw(g -> {
-				//cabV1.show(g);
-			ArrayList<Polygone> polygones = new ArrayList<Polygone>();
+		 //new frame.FrameHelper(width, height).draw(g -> {
+		//		//cabV1.show(g);
+		//	ArrayList<Polygone> polygones = new ArrayList<Polygone>();
 			
 			for(Tag tag : tags) {
 				if (!tag.getType().isDisplayble()) continue;
 				
 				Polygone polygone = new Polygone(tag);
-				DessinePolygone.drawPolygone(g, polygone);
+			//	DessinePolygone.drawPolygone(g, polygone);
 			}
 			 
-		 });
+		 //});
 	}
 	
 	public Tag findBaliseByName(String name) {
