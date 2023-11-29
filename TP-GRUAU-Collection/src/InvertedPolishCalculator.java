@@ -1,12 +1,13 @@
 import exception.IllegalExpressionException;
 import exception.UnknownOperatorException;
+import operator.BinaryOperator;
 
 import java.util.ArrayDeque;
 
 public class InvertedPolishCalculator {
 
     private static final char[] unaryOperators = {'?'};//todo
-    private static final char[] binaryOperators = Operator.getAllOperators();
+    private static final char[] binaryOperators = BinaryOperator.getAllOperators();
     public static int evaluate(String expression){
         return evaluate(expression.split(" "));
     }
@@ -20,8 +21,8 @@ public class InvertedPolishCalculator {
                 if (isBinary(element)){
                     int a = pile.pop();int b = pile.pop();
 
-                    Operator operator = Operator.valueOf(element.charAt(0));
-                    pile.push(operator.operate(b,a));
+                    BinaryOperator binaryOperator = BinaryOperator.valueOf(element.charAt(0));
+                    pile.push(binaryOperator.operate(b,a));
                 }
                 else if (isUnary(element)){
                     int value = pile.pop();
