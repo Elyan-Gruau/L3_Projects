@@ -1,6 +1,7 @@
 package svg.tag;
 
 import shape.IShape;
+import shape.exception.NoMatchingShapeConstructorException;
 import shape.exception.NoMatchingShapeException;
 import shape.utils.ESVGShape;
 
@@ -123,10 +124,11 @@ public class Tag {
 		ESVGShape shapeClass = null;
 		try {
 			shapeClass = ESVGShape.getValueOf(this.getType().toString());
-		} catch (NoMatchingShapeException e) {
+			return shapeClass.createShapeInstance(attributes);
+		} catch (NoMatchingShapeException | IllegalAccessException | InstantiationException |
+				 NoMatchingShapeConstructorException e) {
 			throw new RuntimeException(e);
 		}
-		return null;//todo
 	}
 
 	public boolean isDisplayable() {

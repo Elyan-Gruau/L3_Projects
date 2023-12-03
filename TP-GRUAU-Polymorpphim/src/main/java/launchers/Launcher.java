@@ -23,20 +23,15 @@ public class Launcher {
 			svg = reader.readAsSVG();
 			//svg.show();
 			//Le show ne fonctionne pas.
-
-
-			//Test With ESVGShape
-			ESVGShape shapeClass = ESVGShape.getValueOf("circle");
-
-			double radius = 8;
-			IShape shape = shapeClass.createShapeInstance(new Vector(255,255),radius);
+			System.out.println("666666666666666666666666666666666");
+			for (IShape shape : svg.getShapes()){
+				System.out.println(shape);
+			}
 
 
 
-			System.out.println(shape.getSuperficy());
 			
-		} catch (InstantiationException | IllegalAccessException | NoMatchingShapeConstructorException | IOException |
-				 NoMatchingShapeException e) {
+		} catch (IOException e) {
             throw new RuntimeException(e);
         }
 

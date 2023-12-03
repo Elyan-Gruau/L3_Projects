@@ -14,8 +14,9 @@ public class SVG {
 	private String xmlVerison;
 	private ArrayList<Tag> tags;
 	private ArrayList<IShape> shapes;
-	
-	
+
+
+
 	public SVG(String xml ) {
 		assert isXMLCorrect(xml) : "le XML n'est pas correct.";
 
@@ -181,4 +182,7 @@ public class SVG {
 	}
 
 
+	public ArrayList<IShape> getShapes() {
+		return shapes;
+	}
 }

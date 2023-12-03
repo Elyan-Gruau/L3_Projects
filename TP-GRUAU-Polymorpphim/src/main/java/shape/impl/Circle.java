@@ -1,16 +1,26 @@
 package shape.impl;
 
 import shape.ABSShape;
-import svg.vector.Vector;
+import svg.vector.IVecteur;
+import svg.vector.Vecteur2D;
 
 import java.awt.*;
+import java.util.HashMap;
 
 public class Circle extends ABSShape {
     protected double radius;
 
-    public Circle(Vector centerPoint,Double radius) {
-        super(new Vector[]{centerPoint}, centerPoint );
+    public Circle(IVecteur centerPoint, Double radius) {
+        this.anchorPoint = centerPoint;
         this.radius = radius;
+    }
+
+    public Circle( HashMap<String, String> attributes){
+        this( new Vecteur2D(
+                    Double.parseDouble(attributes.get("cx")),
+                    Double.parseDouble(attributes.get("cy"))
+                ),
+                Double.parseDouble(attributes.get("r")));
     }
 
 
@@ -27,5 +37,9 @@ public class Circle extends ABSShape {
     @Override
     public void paint(Graphics g) {
 
+    }
+
+    public double getRadius() {
+        return radius;
     }
 }
