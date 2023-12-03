@@ -1,7 +1,8 @@
 package shape.utils;
 
-import shape.*;
 import shape.exception.NoMatchingShapeConstructorException;
+import shape.exception.NoMatchingShapeException;
+import shape.*;
 import shape.impl.*;
 
 import java.lang.reflect.Constructor;
@@ -22,14 +23,14 @@ public enum ESVGShape implements ShapeClassProvider {
     }
 
 
-    public static ESVGShape getValueOf(String name){
+    public static ESVGShape getValueOf(String name) throws NoMatchingShapeException {
         String upperName = name.toUpperCase();
         for (ESVGShape changeNameESVGShape : ESVGShape.values()){
             if(changeNameESVGShape.name().equals(upperName)){
                 return changeNameESVGShape;
             }
         }
-        return null;
+        throw new NoMatchingShapeException(name);
     }
 
     @Override

@@ -3,36 +3,40 @@ package svg;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
+import svg.polygone.model.Polygone;
+import shape.IShape;
 import svg.tag.Tag;
 import svg.tag.ETagType;
-import svg.polygone.model.Polygone;
-import svg.polygone.view.DessinePolygone;
 
 public class SVG {
 	private int width;
 	private int height;
 	private String xmlVerison;
 	private ArrayList<Tag> tags;
+	private ArrayList<IShape> shapes;
 	
 	
 	public SVG(String xml ) {
 		assert isXMLCorrect(xml) : "le XML n'est pas correct.";
-	    
-	    this.tags = new ArrayList<>();
-	    for (String tag : parse(xml)) {
-	        //System.out.println("Balise XML ou contenu : " + tag);
-	    	String trimmedTag = tag.trim();
+
+		this.shapes = new ArrayList<>();
+		this.tags = new ArrayList<>();
+	    for (String tagString : parse(xml)) {
+	        //System.out.println("Balise XML ou contenu : " + tagString);
+	    	String trimmedTag = tagString.trim();
 	    	
-	    	Tag balise = new Tag(tag);
-	    	if (!balise.isEnd()) {
-	    		tags.add(balise);
+	    	Tag tag = new Tag(tagString);
+	    	if (!tag.isEnd()) {
+	    		tags.add(tag);
+				if (tag.isDisplayable()){
+					tag.toShape();
+				}
+
 	    	}
-	    	
-	    
 	    }
-	    Tag svgTag = findBaliseByType(ETagType.svg);
-	    
-	    
+
+		//Getting infos about the SVG
+		Tag svgTag = findBaliseByType(ETagType.svg);
 	    String viewBox = svgTag.getAttribute("viewBox");
 	    String[] splitViewBox = viewBox.split(" ");
 	    this.width = Integer.parseInt(splitViewBox[2]) ;

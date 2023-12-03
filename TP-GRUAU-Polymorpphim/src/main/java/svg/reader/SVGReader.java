@@ -8,9 +8,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import svg.SVG;
-import svg.tag.Tag;
-import svg.tag.ETagType;
 import svg.polygone.model.Polygone;
+import svg.tag.ETagType;
+import svg.tag.Tag;
 
 public class SVGReader {
 	private File imageFile ;

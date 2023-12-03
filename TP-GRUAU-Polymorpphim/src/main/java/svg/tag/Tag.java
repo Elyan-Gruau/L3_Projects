@@ -1,5 +1,9 @@
 package svg.tag;
 
+import shape.IShape;
+import shape.exception.NoMatchingShapeException;
+import shape.utils.ESVGShape;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -113,7 +117,19 @@ public class Tag {
 	public Set<String> getAttributeKeys() {
 		return attributes.keySet();
 	}
-	
-	
-	
+
+
+	public IShape toShape() {
+		ESVGShape shapeClass = null;
+		try {
+			shapeClass = ESVGShape.getValueOf(this.getType().toString());
+		} catch (NoMatchingShapeException e) {
+			throw new RuntimeException(e);
+		}
+		return null;//todo
+	}
+
+	public boolean isDisplayable() {
+		return type.isDisplayble();
+	}
 }
