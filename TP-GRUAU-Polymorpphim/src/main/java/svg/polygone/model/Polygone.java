@@ -5,6 +5,8 @@ import java.awt.Graphics;
 
 import svg.tag.Tag;
 import svg.tag.ETagType;
+import svg.vector.IVecteur;
+import svg.vector.VecteurUtils;
 import svg.vector.Vector;
 
 public class Polygone {
@@ -19,9 +21,9 @@ public class Polygone {
 	}
 
 	public double perimetre() {
-		double perimetre = Vector.sub(points[0], points[points.length-1]).length();
+		double perimetre = VecteurUtils.sub(points[0], points[points.length-1]).length();
 		for (int i=0; i<points.length-1; i++) {
-			perimetre += Vector.sub(points[i], points[i+1]).length();
+			perimetre += VecteurUtils.sub(points[i], points[i+1]).length();
 		}
 	
 		return perimetre;
@@ -81,15 +83,15 @@ public class Polygone {
 	}
 	
 
-	public Vector barycentre() {
-		Vector res = Vector.add(points);
+	public IVecteur barycentre() {
+		IVecteur res = VecteurUtils.add(points);
 		return res.multK(1.0/numberOfPoints());
 	
 	}
 	
 	public double distanceAuCentre() {
 		//Cela marche avec v1, v2, v3, ici j'ai pris v2 car le barycentre est équidistant de tout ses sommets.
-		return (Vector.sub(barycentre(), points[0])).length();
+		return (VecteurUtils.sub(barycentre(), points[0])).length();
 	}
 
 	public Vector getPoint(int i) {

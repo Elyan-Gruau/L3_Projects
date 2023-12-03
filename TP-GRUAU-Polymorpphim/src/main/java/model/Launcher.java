@@ -15,7 +15,7 @@ import svg.vector.Vector;
 public class Launcher {
 	public static void main(String[] args) {
 		//Path imagePath = new Path();
-		String path = "TP-GRUAU-Polymorpphim/asset/example.svg";
+		String path = "asset/example.svg";
 		SVGReader reader = new SVGReader(new File(path));
 		
 		SVG svg;
