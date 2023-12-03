@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import svg.SVG;
-import svg.polygone.model.Polygone;
+import svg.polygone.model.PolygoneOld;
 import svg.tag.ETagType;
 import svg.tag.Tag;
 
@@ -90,8 +90,8 @@ public class SVGReader {
 		return results;
 	}
 
-	public static Polygone buildPolygon(String string) {
-		return  new Polygone(new Tag(string));
+	public static PolygoneOld buildPolygon(String string) {
+		return  new PolygoneOld(new Tag(string));
 	}
 	
 

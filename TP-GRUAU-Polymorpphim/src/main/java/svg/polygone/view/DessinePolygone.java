@@ -2,28 +2,28 @@ package svg.polygone.view;
 
 import java.awt.Graphics;
 
-import svg.polygone.model.Polygone;
+import svg.polygone.model.PolygoneOld;
 import svg.polygone.model.PolygoneIterable;
-import svg.vector.Vector;
+import svg.vector.IVecteur;
 
 public class DessinePolygone {
 	private static int[] xPoints, yPoints;
-	private static void buildPolygone(Polygone p) {
+	private static void buildPolygone(PolygoneOld p) {
 		xPoints = new int[p.numberOfPoints()];
 		yPoints = new int[p.numberOfPoints()];
 		int i = 0;
-		for (Vector v : new PolygoneIterable(p)) {
+		for (IVecteur v : new PolygoneIterable(p)) {
 			xPoints[i] = (int)v.get(0);
 			yPoints[i] = (int)v.get(1);
 			i++;
 		}
 	}
-	public static void drawPolygone(Graphics g, Polygone p) {
+	public static void drawPolygone(Graphics g, PolygoneOld p) {
 		buildPolygone(p);
 		g.setColor(p.getStokeColor());
 		g.drawPolygon(xPoints, yPoints, xPoints.length);
 	}
-	public static void fillPolygone(Graphics g, Polygone p) {
+	public static void fillPolygone(Graphics g, PolygoneOld p) {
 		buildPolygone(p);
 		g.setColor(p.getFillColor());
 		g.fillPolygon(xPoints, yPoints, xPoints.length);

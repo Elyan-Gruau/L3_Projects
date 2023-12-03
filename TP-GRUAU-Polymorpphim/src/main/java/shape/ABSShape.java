@@ -9,7 +9,9 @@ public abstract class ABSShape implements IShape{
     protected IVecteur anchorPoint;
     protected Color colorFill = Color.BLUE;
 
-
+    public Color getColorFill() {
+        return colorFill;
+    }
 
     @Override
     public final IVecteur getAnchorPoint() {

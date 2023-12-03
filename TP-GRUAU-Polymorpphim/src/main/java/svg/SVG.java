@@ -3,7 +3,9 @@ package svg;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
-import svg.polygone.model.Polygone;
+import shape.impl.Rectangle;
+import shape.impl.Square;
+import svg.polygone.model.PolygoneOld;
 import shape.IShape;
 import svg.tag.Tag;
 import svg.tag.ETagType;
@@ -31,6 +33,13 @@ public class SVG {
 	    		tags.add(tag);
 				if (tag.isDisplayable()){
 					IShape shape = tag.toShape();
+
+					if (shape instanceof Rectangle){ // Handle square
+						Rectangle rectangle = (Rectangle)shape;
+						if (rectangle.getHeight() == rectangle.getWidth()){
+							shape = new Square(rectangle.getAnchorPoint(),rectangle.getWidth());
+						}
+					}
 					shapes.add(shape);
 				}
 	    	}
@@ -122,7 +131,7 @@ public class SVG {
 			for(Tag tag : tags) {
 				if (!tag.getType().isDisplayble()) continue;
 				
-				Polygone polygone = new Polygone(tag);
+				PolygoneOld polygoneOld = new PolygoneOld(tag);
 			//	DessinePolygone.drawPolygone(g, polygone);
 			}
 			 

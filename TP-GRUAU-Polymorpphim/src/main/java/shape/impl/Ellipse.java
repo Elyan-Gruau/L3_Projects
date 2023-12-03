@@ -2,7 +2,6 @@ package shape.impl;
 
 import svg.vector.IVecteur;
 import svg.vector.Vecteur2D;
-import svg.vector.Vector;
 
 import java.util.HashMap;
 
@@ -16,21 +15,37 @@ public class Ellipse extends Circle{
 
     public Ellipse( HashMap<String, String> attributes) {
         this( new Vecteur2D(
-                    Double.parseDouble("cx"),
-                    Double.parseDouble("cy")
+                    Double.parseDouble(attributes.get("cx")),
+                    Double.parseDouble(attributes.get("cy"))
                 ),
-                Double.parseDouble("rx"),
-                Double.parseDouble("ry"));
+                Double.parseDouble(attributes.get("rx")),
+                Double.parseDouble(attributes.get("ry")));
+        System.out.println("OKK");
     }
 
+    @Override
+    public double getSuperficy() {
+        return Math.PI * radius * XRadius;
+    }
 
-    private static Object[] processAttributes( HashMap<String, String> attributes) {
-        Vecteur2D centerPoint = new Vecteur2D(0,0);//TODO
-        double YRadius = 30;
-        return new Object[] {centerPoint,YRadius};
+    @Override
+    public double getPermimeter() {
+        //Si a = b alors l'ellipse est un cercle.
+        return 2 * Math.PI * Math.sqrt(
+                (Math.pow(radius, 2) + Math.pow(XRadius, 2)) /2
+        );
     }
 
     public double getXRadius() {
         return XRadius;
+    }
+
+    @Override
+    public String toString() {
+        return "Ellipse{" +
+                "XRadius=" + XRadius +
+                ", radius=" + radius +
+                ", anchorPoint=" + anchorPoint +
+                '}';
     }
 }

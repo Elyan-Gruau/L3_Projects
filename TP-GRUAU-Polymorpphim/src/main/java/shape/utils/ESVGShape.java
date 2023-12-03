@@ -61,5 +61,6 @@ public enum ESVGShape implements ShapeClassProvider {
     public String getName() {
         return name;
     }
+
 }
 

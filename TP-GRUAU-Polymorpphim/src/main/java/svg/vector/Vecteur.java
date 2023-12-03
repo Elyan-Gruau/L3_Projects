@@ -2,14 +2,14 @@ package svg.vector;
 
 
 
-public class Vector implements IVecteur{
+public class Vecteur implements IVecteur{
 	private double[] dimensions;
 	
 	//	une méthode pour construire un autre vecteur colinéaires mais k fois plus long, où k est un paramètre
 		//une méthode qui prend 2 vecteurs de dimension 3 et construit leur produit vectoriel, on pourra pour cela s'aider du produit en croix de dimension 2
 	
 	
-	public Vector(int nbDim, double[] values) {
+	public Vecteur(int nbDim, double[] values) {
 		this.dimensions = new double[nbDim];
 		if (values.length > 0) {
 			for (int i=0; i<nbDim; i++) {
@@ -24,7 +24,7 @@ public class Vector implements IVecteur{
 
 	}
 	
-	public Vector(double... values) {
+	public Vecteur(double... values) {
 		this.dimensions = values;
 	}
 	
@@ -42,19 +42,19 @@ public class Vector implements IVecteur{
 		return Math.sqrt(result);
 	}
 	
-	public Vector transpose() {
+	public Vecteur transpose() {
 		assert dimension() == 2;
 		double[] transp = {this.get(1),this.get(0)};
-		return new Vector(  transp);
+		return new Vecteur(  transp);
 	}
 
 	@Override
-	public Vector opposé() {
+	public Vecteur opposé() {
 		double[] opposedValues = new double[dimension()] ;
 		for (int i=0;i<this.dimension();i++) {
 			opposedValues[i] = - dimensions[i];
 		}
-		return new Vector(opposedValues);
+		return new Vecteur(opposedValues);
 	}
 	
 	public double get(int i) {
@@ -76,11 +76,11 @@ public class Vector implements IVecteur{
 	}
 
 	@Override
-	public Vector multK(double k) {
+	public Vecteur multK(double k) {
 		double[] values = new double[this.dimension()];
 		for (int i=0;i<this.dimension();i++) {
 			values[i] = dimensions[i] * k;
 		}
-		return new Vector(values);
+		return new Vecteur(values);
 	}
 }

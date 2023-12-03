@@ -2,12 +2,12 @@ package svg.polygone.model;
 
 import java.util.Iterator;
 
-import svg.vector.Vector;
+import svg.vector.IVecteur;
 
-class PolygoneIterator implements Iterator<Vector> {
-	private Polygone polygon;
+class PolygoneIterator implements Iterator<IVecteur> {
+	private PolygoneOld polygon;
 	private int current = 0;
-	PolygoneIterator(Polygone polygon) {
+	PolygoneIterator(PolygoneOld polygon) {
 		this.polygon = polygon;
 	}
 
@@ -17,7 +17,7 @@ class PolygoneIterator implements Iterator<Vector> {
 	}
 
 	@Override
-	public Vector next() {
+	public IVecteur next() {
 		return polygon.get(current++);
 	}
 

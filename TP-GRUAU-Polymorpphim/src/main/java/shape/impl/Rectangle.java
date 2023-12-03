@@ -1,9 +1,7 @@
 package shape.impl;
 
-import shape.ABSShape;
 import svg.vector.IVecteur;
 import svg.vector.Vecteur2D;
-import svg.vector.Vector;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -26,12 +24,12 @@ public class Rectangle extends Square {
 
     @Override
     public double getSuperficy() {
-        return 0;
+        return height * width;
     }
 
     @Override
     public double getPermimeter() {
-        return 0;
+        return height * 2 + width * 2;
     }
 
     @Override
@@ -41,5 +39,14 @@ public class Rectangle extends Square {
 
     public double getHeight() {
         return height;
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "height=" + height +
+                ", width=" + width +
+                ", anchorPoint=" + anchorPoint +
+                '}';
     }
 }

@@ -7,16 +7,17 @@ import svg.tag.Tag;
 import svg.tag.ETagType;
 import svg.vector.IVecteur;
 import svg.vector.VecteurUtils;
-import svg.vector.Vector;
+import svg.vector.Vecteur;
 
-public class Polygone {
-	private Vector[] points ;
+@Deprecated
+public class PolygoneOld {
+	private IVecteur[] points ;
 	private Color fillColor;
 	private Color strokeColor;
 	private int strokeWidth;
 	
 	
-	public Polygone(Vector... points) {
+	public PolygoneOld(IVecteur... points) {
 		this.points = points.clone();
 	}
 
@@ -31,13 +32,13 @@ public class Polygone {
 	}
 	
 	
-	public Polygone(Tag tag) {
+	public PolygoneOld(Tag tag) {
 		assert tag != null: "la balise ne doit pas être null.";
 		assert tag.getType() == ETagType.polygon : "La balise donnée n'est pas de type polygon.";
 		String pointsAsText = tag.getAttribute("points");
 		if (pointsAsText != null) {
 			String[] splittedPoints = pointsAsText.split(" ");
-			Vector[] tempPoints = new Vector[splittedPoints.length];
+			Vecteur[] tempPoints = new Vecteur[splittedPoints.length];
 			int nullVectors = 0;
 			for (int i = 0 ; i< splittedPoints.length;i++) {
 				if (splittedPoints[i].isEmpty()) {
@@ -50,11 +51,11 @@ public class Polygone {
 				double x = Double.parseDouble(coordinates[0]);
 				double y = Double.parseDouble(coordinates[1]);
 				//System.out.println("CREER ");
-				tempPoints[i] = new Vector(x,y);
+				tempPoints[i] = new Vecteur(x,y);
 			}
 			
 			//Compter les occurences nulles 
-			this.points = new Vector[splittedPoints.length-nullVectors];
+			this.points = new Vecteur[splittedPoints.length-nullVectors];
 			int j = 0;
 			for (int i = 0 ; i<tempPoints.length; i++  ) {
 				if (tempPoints[i] != null) {
@@ -94,7 +95,7 @@ public class Polygone {
 		return (VecteurUtils.sub(barycentre(), points[0])).length();
 	}
 
-	public Vector getPoint(int i) {
+	public IVecteur getPoint(int i) {
 		return points[i];
 	}
 
@@ -106,14 +107,14 @@ public class Polygone {
 		
 	}
 	
-	public Vector get(int i) {
+	public IVecteur get(int i) {
 		return points[i];
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (Vector vecteur:points) {
+		for (IVecteur vecteur:points) {
 			sb.append(vecteur.toString());
 			sb.append(" ");
 		}

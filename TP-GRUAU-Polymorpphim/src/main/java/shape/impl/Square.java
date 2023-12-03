@@ -24,16 +24,28 @@ public class Square extends ABSShape {
 
     @Override
     public double getSuperficy() {
-        return 0;
+        return width * width;
     }
 
     @Override
     public double getPermimeter() {
-        return 0;
+        return  width * 4;
+    }
+
+    public double getWidth() {
+        return width;
     }
 
     @Override
     public void paint(Graphics g) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "width=" + width +
+                ", anchorPoint=" + anchorPoint +
+                '}';
     }
 }

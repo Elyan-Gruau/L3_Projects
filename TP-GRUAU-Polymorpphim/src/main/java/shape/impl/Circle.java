@@ -42,4 +42,12 @@ public class Circle extends ABSShape {
     public double getRadius() {
         return radius;
     }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                ", anchorPoint=" + anchorPoint +
+                '}';
+    }
 }

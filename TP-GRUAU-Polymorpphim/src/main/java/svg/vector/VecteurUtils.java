@@ -21,13 +21,13 @@ public class VecteurUtils {
         double d2 = v1.get(0) * v2.get(2) - v1.get(2) * v2.get(0);
         double d3 = v1.get(0) * v2.get(1) - v1.get(1) * v2.get(0);
 
-        return new Vector(d1,d2,d3);
+        return new Vecteur(d1,d2,d3);
     }
 
     public static IVecteur fabriqueVecteur(double ... components) {
         return components.length == 2 ?
                 new Vecteur2D(components[0], components[1]) :
-                new Vector(components);
+                new Vecteur(components);
     }
 
     //une méthode qui prend 2 vecteurs de même dimension et construit leur produit scalaire
@@ -40,7 +40,7 @@ public class VecteurUtils {
         return result;
     }
 
-    public static IVecteur add(Vector... vecteurs) {
+    public static IVecteur add(IVecteur... vecteurs) {
         assert vecteurs !=  null && vecteurs.length >= 2;
 
         int requiredDim = vecteurs[0].dimension();
@@ -76,7 +76,7 @@ public class VecteurUtils {
         for (int i=0; i<v0.dimension() ;i++) {
             resultValues[i] = v0.get(i) - v1.get(i) ;
         }
-        return new Vector(resultValues);
+        return new Vecteur(resultValues);
     }
 
     //une méthode qui prend n vecteurs de même dimension et construit leur différence

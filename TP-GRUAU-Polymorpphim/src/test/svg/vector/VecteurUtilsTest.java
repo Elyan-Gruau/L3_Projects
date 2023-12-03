@@ -9,12 +9,12 @@ public class VecteurUtilsTest {
     public void testSameDimension() {
         Vecteur2D vecteur1_2D = new Vecteur2D(1, 2);
         Vecteur2D vecteur2_2D = new Vecteur2D(98, 32);
-        Vector vector3_3D = new Vector(3, 4, 5);
-        Vector vector4_3D = new Vector(63, 78, 1);
+        Vecteur vecteur3_3D = new Vecteur(3, 4, 5);
+        Vecteur vecteur4_3D = new Vecteur(63, 78, 1);
 
-        assertFalse(VecteurUtils.sameDimension(vecteur1_2D, vector3_3D));
+        assertFalse(VecteurUtils.sameDimension(vecteur1_2D, vecteur3_3D));
         assertTrue(VecteurUtils.sameDimension(vecteur1_2D, vecteur2_2D));
-        assertTrue(VecteurUtils.sameDimension(vector3_3D, vector4_3D));
+        assertTrue(VecteurUtils.sameDimension(vecteur3_3D, vecteur4_3D));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class VecteurUtilsTest {
         assertEquals(1, vecteur3D.get(0), 0.0001);
         assertEquals(2, vecteur3D.get(1), 0.0001);
         assertEquals(3, vecteur3D.get(2), 0.0001);
-        assertTrue(vecteur3D instanceof Vector );
+        assertTrue(vecteur3D instanceof Vecteur);
 
         IVecteur vecteur2D = VecteurUtils.fabriqueVecteur(1, 2);
         assertEquals(1, vecteur3D.get(0), 0.0001);
@@ -57,8 +57,8 @@ public class VecteurUtilsTest {
 
     @Test
     public void testAdd() {
-        Vector v1 = new Vector(1, 2, 3);
-        Vector v2 = new Vector(4, 5, 6);
+        Vecteur v1 = new Vecteur(1, 2, 3);
+        Vecteur v2 = new Vecteur(4, 5, 6);
 
         IVecteur result = VecteurUtils.add(v1, v2);
 
@@ -82,9 +82,9 @@ public class VecteurUtilsTest {
 
     @Test
     public void testSubWithMultipleVectors() {
-        Vector v1 = new Vector(4, 5, 6);
-        Vector v2 = new Vector(1, 2, 3);
-        Vector v3 = new Vector(2, 1, 1);
+        Vecteur v1 = new Vecteur(4, 5, 6);
+        Vecteur v2 = new Vecteur(1, 2, 3);
+        Vecteur v3 = new Vecteur(2, 1, 1);
 
         IVecteur result = VecteurUtils.sub(v1, v2, v3);
 
