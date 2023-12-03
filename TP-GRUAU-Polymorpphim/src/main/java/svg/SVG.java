@@ -29,9 +29,9 @@ public class SVG {
 	    	if (!tag.isEnd()) {
 	    		tags.add(tag);
 				if (tag.isDisplayable()){
-					tag.toShape();
+					IShape shape = tag.toShape();
+					shapes.add(shape);
 				}
-
 	    	}
 	    }
 
