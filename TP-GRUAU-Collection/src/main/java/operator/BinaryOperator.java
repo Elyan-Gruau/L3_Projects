@@ -1,6 +1,6 @@
-package operator;
+package main.java.operator;
 
-import exception.UnknownOperatorException;
+import main.java.exception.UnknownOperatorException;
 
 import java.util.ArrayList;
 

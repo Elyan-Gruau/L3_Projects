@@ -1,4 +1,4 @@
-package operator;
+package main.java.operator;
 
 public enum UnaryOperator {
     FACTORIAL(UnaryOperator::factorial,"!"),

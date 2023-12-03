@@ -1,6 +1,8 @@
-import exception.IllegalExpressionException;
-import exception.UnknownOperatorException;
-import operator.BinaryOperator;
+package main.java;
+
+import main.java.exception.IllegalExpressionException;
+import main.java.exception.UnknownOperatorException;
+import main.java.operator.BinaryOperator;
 
 import java.util.ArrayDeque;
 

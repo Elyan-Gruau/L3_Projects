@@ -1,4 +1,4 @@
-package operator;
+package main.java.operator;
 
 @FunctionalInterface
 interface FIBinaryOperation {
