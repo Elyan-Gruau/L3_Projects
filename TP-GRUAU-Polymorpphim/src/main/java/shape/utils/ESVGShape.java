@@ -10,24 +10,26 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public enum ESVGShape implements ShapeClassProvider {
-    CIRCLE(Circle.class),
-    ELLIPSE(Ellipse.class),
-    POLYGON(Polygon.class),
-    SQUARE(Square.class),
-    RECTANGLE(Rectangle.class);
+    CIRCLE(Circle.class,"circle"),
+    ELLIPSE(Ellipse.class,"ellipse"),
+    POLYGON(Polygon.class,"polygon"),
+    SQUARE(Square.class,"square"),
+    RECTANGLE(Rectangle.class,"rect"),;
 
     private final Class<?> shapeClass;
+    private final String name;
 
-    ESVGShape(Class<?> shapeClass) {
+    ESVGShape(Class<?> shapeClass,String name) {
         this.shapeClass = shapeClass;
+        this.name = name;
     }
 
 
     public static ESVGShape getValueOf(String name) throws NoMatchingShapeException {
-        String upperName = name.toUpperCase();
-        for (ESVGShape changeNameESVGShape : ESVGShape.values()){
-            if(changeNameESVGShape.name().equals(upperName)){
-                return changeNameESVGShape;
+        String lowerName = name.toLowerCase();
+        for (ESVGShape ESVGShape : ESVGShape.values()){
+            if(ESVGShape.getName().equals(lowerName)){
+                return ESVGShape;
             }
         }
         throw new NoMatchingShapeException(name);
@@ -54,6 +56,10 @@ public enum ESVGShape implements ShapeClassProvider {
         } catch (NoSuchMethodException e){
             throw new NoMatchingShapeConstructorException(shapeClass,parameterTypes);
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
