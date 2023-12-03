@@ -1,7 +1,6 @@
 package svg.vector;
 
 
-import static svg.vector.VecteurUtils.sameDimension;
 
 public class Vector implements IVecteur{
 	private double[] dimensions;
